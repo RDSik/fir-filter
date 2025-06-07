@@ -1,8 +1,13 @@
 *
 !*/
 
+!.github/**/*.yml
+
 !rtl/*.sv
 
+!tb/*.m
+!tb/*.mem
+!tb/*.coe
 !tb/*.sv
 !tb/*.svh
 !tb/wave.do
