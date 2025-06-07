@@ -4,10 +4,10 @@ module dds #(
     parameter int DATA_WIDTH  = 16,
     parameter     SIN_FILE    = "sin_lut.mem"
 ) (
-    input  logic                          clk_i,
-    input  logic                          arstn_i,
-    input  logic        [PHASE_WIDTH-1:0] phase_inc_i,
-    output logic signed [DATA_WIDTH-1:0]  sin_o
+    input  logic                   clk_i,
+    input  logic                   arstn_i,
+    input  logic [PHASE_WIDTH-1:0] phase_inc_i,
+    output logic [DATA_WIDTH-1:0]  sin_o
 );
 
 localparam int MEM_DEPTH = 2**PHASE_WIDTH;
