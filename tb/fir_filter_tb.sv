@@ -13,15 +13,15 @@ localparam int OUT_WIDTH   = DATA_WIDTH + COE_WIDTH;
 localparam int CLK_PER     = 2;
 localparam int RESET_DELAY = 10;
 localparam int SIM_TIME    = 1000;
-localparam     PHASE_INC_1 = PHASE_WIDTH'(100);
+localparam     PHASE_INC_1 = PHASE_WIDTH'(2000);
 localparam     PHASE_INC_2 = PHASE_WIDTH'(200);
 
-logic                          clk_i;
-logic                          arstn_i;
-logic signed [DATA_WIDTH-1:0]  sin_out_1;
-logic signed [DATA_WIDTH-1:0]  sin_out_2;
-logic signed [OUT_WIDTH-1:0]   fir_out;
-logic signed [DATA_WIDTH-1:0]  noise;
+logic                  clk_i;
+logic                  arstn_i;
+logic [DATA_WIDTH-1:0] sin_out_1;
+logic [DATA_WIDTH-1:0] sin_out_2;
+logic [OUT_WIDTH-1:0]  fir_out;
+logic [DATA_WIDTH-1:0] noise;
 
 assign noise = (sin_out_1 + sin_out_2)/2;
 
