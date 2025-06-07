@@ -37,7 +37,11 @@ initial begin
     repeat (RESET_DELAY) @(posedge clk_i);
     arstn_i = 1'b1;
     repeat (SIM_TIME) @(posedge clk_i);
-    $stop;
+    `ifdef VERILATOR
+    $finish();
+    `else
+    $stop();
+    `endif
 end
 
 initial begin
