@@ -1,0 +1,13 @@
+*
+!*/
+
+!rtl/*.sv
+
+!tb/*.sv
+!tb/*.svh
+!tb/wave.do
+
+!.gitignore
+!Makefile
+!LICENSE.txt
+!*.md
