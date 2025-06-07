@@ -1,3 +1,4 @@
+/* verilator lint_off TIMESCALEMOD */
 module dds #(
     parameter int PHASE_WIDTH = 16,
     parameter int DATA_WIDTH  = 16,

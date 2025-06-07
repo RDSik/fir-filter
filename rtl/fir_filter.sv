@@ -1,3 +1,4 @@
+/* verilator lint_off TIMESCALEMOD */
 module fir_filter #(
     parameter int DATA_WIDTH = 16,
     parameter int COE_WIDTH  = 16,
