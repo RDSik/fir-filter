@@ -14,7 +14,7 @@ localparam int MEM_DEPTH = 2**ADDR_WIDTH;
 logic [DATA_WIDTH-1:0] rom [MEM_DEPTH];
 
 initial begin
-    $readmemb(MEM_FILE, rom);
+    $readmemh(MEM_FILE, rom);
 end
 
 always_ff @(posedge clk_i) begin
