@@ -10,8 +10,6 @@ module dds #(
     output logic signed [DATA_WIDTH-1:0]  sin_o
 );
 
-localparam int MEM_DEPTH = 2**PHASE_WIDTH;
-
 logic [PHASE_WIDTH-1:0] phase_acc;
 
 always @(posedge clk_i or negedge arstn_i) begin
@@ -23,13 +21,13 @@ always @(posedge clk_i or negedge arstn_i) begin
 end
 
 brom #(
-    .MEM_FILE  (SIN_FILE  ),
-    .MEM_DEPTH (MEM_DEPTH ),
-    .MEM_WIDTH (DATA_WIDTH)
+    .MEM_FILE   (SIN_FILE   ),
+    .ADDR_WIDTH (PHASE_WIDTH),
+    .DATA_WIDTH (DATA_WIDTH )
 ) i_sin_lut (
-    .clk_i     (clk_i     ),
-    .addr_i    (phase_acc ),
-    .data_o    (sin_o     )
+    .clk_i      (clk_i      ),
+    .addr_i     (phase_acc  ),
+    .data_o     (sin_o      )
 );
 
 endmodule

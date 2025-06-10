@@ -21,7 +21,7 @@ SAMPLE_WIDTH = 16;
 lpFilt = designfilt('lowpassfir', 'PassbandFrequency', Fpass, 'StopbandFrequency', Fstop, ... 
          'PassbandRipple', PASS_RIPPLE, 'StopbandAttenuation', Astop, 'SampleRate', Fs, 'DesignMethod', DESIGN);
 filter_coe = round(lpFilt.Coefficients*(2^(COE_WIDTH-1)-1));
-fvtool(filter_coe);
+fvtool(filter_coe, 'Fs', Fs);
 
 hq = dfilt.dffir(filter_coe); 
 set(hq,'arithmetic','fixed');
@@ -49,7 +49,7 @@ sin_lut = zeros(SAMPLE_NUM, 1);
 
 for i = 1:SAMPLE_NUM
     sin_lut(i) = round((2^(SAMPLE_WIDTH-1)-1) * (1 + sin(2*pi*i/SAMPLE_NUM)));
-    fprintf(sin_fid, '%s\n', dec2hex(sin_lut(i)));
+    fprintf(sin_fid, '%s\n', dec2bin(sin_lut(i), SAMPLE_WIDTH));
 end
 
 fclose(sin_fid);
