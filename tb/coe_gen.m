@@ -17,6 +17,8 @@ PHASE_WIDTH  = 16;
 SAMPLE_NUM   = 2^PHASE_WIDTH;
 SAMPLE_WIDTH = 16;
 
+HALF_BYTE = 4;
+
 %% Filter coefficients generation
 lpFilt = designfilt('lowpassfir', 'PassbandFrequency', Fpass, 'StopbandFrequency', Fstop, ... 
          'PassbandRipple', PASS_RIPPLE, 'StopbandAttenuation', Astop, 'SampleRate', Fs, 'DesignMethod', DESIGN);
@@ -36,7 +38,7 @@ if coe_fid == -1
 end
 
 for i = 1:length(filter_coe)
-    fprintf(coe_fid, '%s\n', dec2hex(filter_coe(i), COE_WIDTH/4));
+    fprintf(coe_fid, '%s\n', dec2hex(filter_coe(i), COE_WIDTH/HALF_BYTE));
 end
 
 %% Sin lut generation
@@ -49,7 +51,7 @@ sin_lut = zeros(SAMPLE_NUM, 1);
 
 for i = 1:SAMPLE_NUM
     sin_lut(i) = round((2^(SAMPLE_WIDTH-1)-1) * (1 + sin(2*pi*i/SAMPLE_NUM)));
-    fprintf(sin_fid, '%s\n', dec2hex(sin_lut(i), SAMPLE_WIDTH/4));
+    fprintf(sin_fid, '%s\n', dec2hex(sin_lut(i), SAMPLE_WIDTH/HALF_BYTE));
 end
 
 fclose(sin_fid);
