@@ -6,12 +6,12 @@ module brom #(
 ) (
     input  logic                  clk_i,
     input  logic [ADDR_WIDTH-1:0] addr_i,
-    output logic [MEM_WIDTH-1:0]  data_o
+    output logic [DATA_WIDTH-1:0] data_o
 );
 
 localparam int MEM_DEPTH = 2**ADDR_WIDTH;
 
-logic [MEM_WIDTH-1:0] rom [MEM_DEPTH];
+logic [DATA_WIDTH-1:0] rom [MEM_DEPTH];
 
 initial begin
     $readmemb(MEM_FILE, rom);
